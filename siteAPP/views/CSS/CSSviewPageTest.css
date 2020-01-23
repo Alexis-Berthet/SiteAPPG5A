@@ -1,0 +1,33 @@
+.infos{
+    display: block;
+    background-color: white;
+    margin:0%;
+    height: 100%;
+    width: 100%;
+    height: 80%;
+}
+
+#Bienvenue{
+    color: rgb(54, 147, 214);;
+    font-size: 20px;
+    text-align: center;
+    font-family: georgia;
+
+}
+
+#texte{
+    margin: 10%;
+    color: rgb(54, 147, 214);
+    font-size: 20px;
+    text-align: left;
+    font-family: georgia;
+}
+
+#bouton{
+    margin: 10%;
+    color: rgb(54, 147, 214);
+    font-size: 20px;
+    text-align: left;
+    font-family: georgia;
+
+}

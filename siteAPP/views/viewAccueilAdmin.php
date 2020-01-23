@@ -29,7 +29,7 @@
     <br/>
     <hr />
     <br/>
-    <a class="lien" href= "index.php?action=see_home">Commencer un test</a>
+    <a class="lien" href= "index.php?action=see_test">Commencer un test</a>
     <br/>
     <br/>
     <hr />

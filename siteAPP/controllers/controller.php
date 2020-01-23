@@ -4,7 +4,7 @@ require "modeles/model.php";
 
 function seeHome()
 {
-    require "views/template/header.php";
+    see_header();
     require "views/viewHome.php";
     require "views/template/footer.php";
 }
@@ -30,28 +30,28 @@ function seeConnexion()
 
 function seeMotDePasseOublie()
 {
-    require "views/template/header.php";
+    see_header();
     require "views/viewMotDePasseOublie.php";
     require "views/template/footer.php";
 }
 
 function seeContact()
 {
-    require "views/template/header.php";
+    see_header();
     require "views/viewContact.php";
     require "views/template/footer.php";
 }
 
 function seeForum()
 {
-    require "views/template/header.php";
+    see_header();
     require "views/viewForum.php";
     require "views/template/footer.php";
 }
 
 function erreurConnexion()
 {
-    require "views/template/header.php";
+    see_header();
     require "views/viewConnexion.php";
     echo "Cette combinaison adresse mail et mot de passe est incorrecte";
     require "views/template/footer.php";
@@ -59,7 +59,7 @@ function erreurConnexion()
 
 function mentions()
 {
-    require "views/template/header.php";
+    see_header();
     require "views/viewMentions.php";
     require "views/template/footer.php";
 }
@@ -86,7 +86,7 @@ function connexion()
 
 function see_donnees_utilisateur()
 {
-    require "views/template/header.php";
+    see_header();
     require "views/viewResultatsAdmin.php";
     require "views/template/footer.php";
 
@@ -94,32 +94,32 @@ function see_donnees_utilisateur()
 
 function see_inscrire_gestionnaire()
 {
-    require "views/template/header.php";
-    require "views/viewInscrireGestionnaire.php";
+    see_header();
+    require "views/viewInscriptionGest.php";
     require "views/template/footer.php";
 
 }
 
 function see_supprimer_gestionnaire()
 {
-    require "views/template/header.php";
-    require "views/viewInscrireGestionnaire.php";
+    see_header();
+    require "views/viewSupprimerGestionnaire.php";
     require "views/template/footer.php";
 
 }
 
 function see_inscrire_nouvel_utilisateur()
 {
-    require "views/template/header.php";
-    require "views/viewInscrireGestionnaire.php";
+    see_header();
+    require "views/viewInscriptionUtilisateur.php";
     require "views/template/footer.php";
 
 }
 
 function see_supprimer_utilisateur()
 {
-    require "views/template/header.php";
-    require "views/viewInscrireGestionnaire.php";
+    see_header();
+    require "views/viewSupprimerUtilisateur.php";
     require "views/template/footer.php";
 }
 
@@ -149,22 +149,95 @@ function see_header()
 
 function supprimer_utilisateur()
 {
-    if (!isset($_POST['numero'])) {
+    if (isset($_POST["numero"])) {
         $numero = htmlspecialchars($_POST["numero"]);
         $reponse = getUserByNumero($numero);
         $request = deleteUserByNumero($numero);
-        while ($donnees = $reponse->fetch()) {
-            //$bdd->query($request);
-            if ($request == FALSE) {
-                $Color = "white";
-                echo '<center>' . '<div style="Color:' . $Color . '">' . 'Echec de la requête.<br />';
-            } else {
-                $Color = "white";
-                echo '<center>' . '<div style="Color:' . $Color . '">' . $donnees['nom'] . ' ' . $donnees['nom'] . ' a bien été supprimé' . '</div>';
-            }
+        //$bdd->query($request);
+        if ($request == FALSE) {
+            $Color = "white";
+            echo '<center>' . '<div style="Color:' . $Color . '">' . 'Echec de la requête.<br />';
+        } else {
+            $Color = "white";
+            echo '<center>' . '<div style="Color:' . $Color . '">' . $reponse['nom'] . ' ' . $reponse['nom'] . ' a bien été supprimé' . '</div>';
         }
-        $reponse->closeCursor();
-    } else{
+    } else {
         see_supprimer_utilisateur();
     }
 }
+
+function supprimer_gestionnaire()
+{
+    if (isset($_POST["numero"])) {
+        $numero = htmlspecialchars($_POST["numero"]);
+        $reponse = getUserByNumero($numero);
+        $request = deleteUserByNumero($numero);
+        //$bdd->query($request);
+        if ($request == FALSE) {
+            $Color = "white";
+            echo '<center>' . '<div style="Color:' . $Color . '">' . 'Echec de la requête.<br />';
+        } else {
+            $Color = "white";
+            echo '<center>' . '<div style="Color:' . $Color . '">' . $reponse['nom'] . ' ' . $reponse['nom'] . ' a bien été supprimé' . '</div>';
+        }
+    } else {
+        see_supprimer_utilisateur();
+    }
+}
+
+function inscription_utilisateur()
+{
+    if (isset($_POST['Submit3'])) {
+        $nom = $_POST['nom'];
+        $prenom = $_POST['prenom'];
+        $identifiant = $_POST['identifiant'];
+        $identifiantConfirmer = $_POST['identifiantConfirmer'];
+        $motDePasse = $_POST['motDePasse'];
+        $verifierMotDePasse = $_POST['verifierMotDePasse'];
+        $age = $_POST['age'];
+        $poids = $_POST['poids'];
+        $taille = $_POST['taille'];
+        $infocompl = $_POST['infocompl'];
+        $role = "user";
+        inscriptionUtilisateur($nom, $prenom, $identifiant, $motDePasse, $age, $poids, $taille, $infocompl, $role);
+        seeConnexion();
+    } else {
+        see_inscrire_nouvel_utilisateur();
+    }
+}
+
+function inscription_gest()
+{
+    if (isset($_POST['Submit3'])) {
+        $nom = $_POST['nom'];
+        $prenom = $_POST['prenom'];
+        $identifiant = $_POST['identifiant'];
+        $identifiantConfirmer = $_POST['identifiantConfirmer'];
+        $motDePasse = $_POST['motDePasse'];
+        $verifierMotDePasse = $_POST['verifierMotDePasse'];
+        $age = $_POST['age'];
+        $poids = $_POST['poids'];
+        $taille = $_POST['taille'];
+        $infocompl = $_POST['infocompl'];
+        $role = "gest";
+        inscriptionUtilisateur($nom, $prenom, $identifiant, $motDePasse, $age, $poids, $taille, $infocompl, $role);
+        seeConnexion();
+    } else {
+        see_inscription_gest();
+    }
+}
+
+function see_test()
+{
+    see_header();
+    require "views/pageTest/viewPageTest1.php";
+    require "views/template/footer.php";
+}
+
+function see_historique()
+{
+    see_header();
+    require "views/pageTest/viewHistorique.php";
+    require "views/template/footer.php";
+}
+

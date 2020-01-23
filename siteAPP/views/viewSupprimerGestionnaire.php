@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="supprimerGestionnaire.css">
+        <link rel="stylesheet" href="views/CSS/CSSSupprimerGestionnaire.css">
         <title>SuppGest</title>
     </head>
     <body>
@@ -20,7 +20,7 @@
         {
             ?>
             
-            <form action="index.php?action=action=supprimer_utilisateur" method="post">
+            <form action="index.php?action=supprimer_gestionnaire" method="post">
             <p>Entrez un numéro de gestionnaire à supprimer : 
             
             <input name="numero" />

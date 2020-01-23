@@ -8,7 +8,7 @@
 
 <body>
 
-<header>  <h2 id="Connexion"> <a href="index.php?action=see_connexion">Connexion </a></h2>
+<header>  <h2 id="Connexion"> <a href="index.php?action=see_connexion">Mes Tests </a></h2>
     <h2 id="Contact"> <a href="index.php?action=see_contact">Contact </a></h2>
     <h2 id="Accueil"> <a href="index.php?action=see_home">Accueil </a></h2>
     <h2 id="Forum"> <a href="index.php?action=see_forum">Forum </a></h2>

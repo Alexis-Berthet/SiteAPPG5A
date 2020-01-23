@@ -18,7 +18,7 @@
                             <th class="cell100 column2">Prenom</th>
                             <th class="cell100 column3">Mail</th>
                             <th class="cell100 column4"><a id="test" href="index.php?action=see_test($user)">Tests</a></th>
-                            <th class="cell100 column5"><a id="supprimer" href="index.php?action=delete($user)">Supprimer</a></th>
+                            <th class="cell100 column5"><a id="supprimer" href="index.php?action=">Supprimer</a></th>
                         </tr>
                         </thead>
                     </table>

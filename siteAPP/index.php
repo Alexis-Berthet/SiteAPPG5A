@@ -45,8 +45,24 @@ if (isset($_GET["action"])) {
         case "see_user_data":
             see_user_data();
             break;
-        case "supprimer_utilisateur":
+        case "supprimer_utilisateur" :
             supprimer_utilisateur();
+            break;
+        case "supprimer_gestionnaire" :
+            supprimer_gestionnaire();
+            break;
+        case "inscription_utilisateur" :
+            inscription_utilisateur();
+            break;
+        case "inscription_gest" :
+            inscription_gest();
+            break;
+        case "see_test" :
+            see_test();
+            break;
+        case "see_historique" :
+            see_historique();
+            break;
 
 
         default:

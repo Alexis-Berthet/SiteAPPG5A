@@ -28,21 +28,31 @@ function getRole($identifiant)
     return $req->fetch();
 }
 
-function getEmail($mail) {
-    $db =dbConnect();
+function getEmail($mail)
+{
+    $db = dbConnect();
     $req = $db->prepare("SELECT adresseMail FROM personne WHERE adresseMail=:adresseMail");
-    $req->bindValue(':adresseMail',$mail);
+    $req->bindValue(':adresseMail', $mail);
     return $req->fetch();
 }
 
-function getUserByNumero($numero){
-    $db=dbConnect();
+function getUserByNumero($numero)
+{
+    $db = dbConnect();
     $reponse = $db->query('SELECT * FROM personne WHERE N°Inscription =' . $numero . ' ');
     return $reponse->fetch();
 }
 
-function deleteUserByNumero($numero){
-    $db=dbConnect();
+function deleteUserByNumero($numero)
+{
+    $db = dbConnect();
     $reponse = $db->query('DELETE * FROM personne WHERE N°Inscription =' . $numero . ' ');
     return $db->query($reponse);
+}
+
+function inscriptionUtilisateur($nom, $prenom, $identifiant, $motDePasse, $poids, $taille, $age, $infocompl, $role)
+{
+    $database = dbConnect();
+    $database->exec("INSERT INTO `personne` (`lastname`, `firstname`,`mail`, `password`,`weight`,`height`,`age`,`information`,`role`)
+  VALUES ($nom,$prenom,$identifiant,$motDePasse,$poids,$taille,$age,$infocompl,$role)");
 }

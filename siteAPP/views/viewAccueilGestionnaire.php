@@ -20,7 +20,7 @@
     <br/>
     <hr />
     <br/>
-    <a class="lien" href= "https://www.google.com">Supprimer un utilisateur</a>
+    <a class="lien" href= "index.php?action=supprimer_utilisateur">Supprimer un utilisateur</a>
     <br/>
     <br/>
     <hr />
